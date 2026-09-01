@@ -210,3 +210,23 @@
   .tooltip { max-width: calc(100% - 2rem); pointer-events: auto; }
   .regime-bar .hint { display: none; }
 }
+
+/* ===== flow label detail tooltip ===== */
+.flow-label { cursor: default; }
+.flow[data-detail] .flow-label { cursor: help; }
+.flow[data-detail] .flow-label:hover { fill: var(--color-text); }
+
+.flow-tip {
+  position: absolute;
+  z-index: 3;
+  max-width: 240px;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.flow-tip[hidden] { display: none; }

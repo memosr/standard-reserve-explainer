@@ -135,6 +135,17 @@
         <text class="flow-label" x="655" y="250">to active vault</text>
       </g>
 
+      <!-- 7b. Central Bank → Pool (15% protocol-owned liquidity) -->
+      <g class="flow flow-eth" data-flow="pol" data-from="bank" data-to="pool">
+        <path id="path-pol" d="M390,285 C 430,285 470,230 470,142" marker-end="url(#arrow-eth)"/>
+        <text class="flow-label" x="458" y="200" text-anchor="end"><tspan class="num">15%</tspan> to POL,</text>
+        <text class="flow-label" x="458" y="215" text-anchor="end">added forever</text>
+        <g class="flow-dots">
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#path-pol"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="3.2s" repeatCount="indefinite" begin="-1.6s"><mpath href="#path-pol"/></animateMotion></circle>
+        </g>
+      </g>
+
       <!-- 8. Vaults → Pool (contraction: buyback + burn) -->
       <g class="flow flow-burn" data-flow="buyback" data-from="vaults" data-to="pool" data-regime="contraction">
         <path id="path-buyback" d="M740,90 L612,90" marker-end="url(#arrow-burn)"/>
@@ -195,7 +206,7 @@
         <rect width="220" height="100"/>
         <text class="entity-tag" x="16" y="24">06</text>
         <text class="entity-name" x="16" y="56">Bankers</text>
-        <text class="entity-sub" x="16" y="78">charters, 1 to 10 branches each</text>
+        <text class="entity-sub" x="16" y="78">charters, 1 to 10 branches</text>
       </g>
     </svg>
 
@@ -205,10 +216,17 @@
       <p class="tooltip-tldr"></p>
     </div>
 
+    <div class="flow-tip" role="tooltip" hidden></div>
+
     <div class="controls">
       <button type="button" class="auto-btn" aria-pressed="false" data-auto-btn>Auto <span class="hint">10s</span></button>
     </div>
   </section>
+
+  <footer class="site-footer">
+    <p>Community explainer, not affiliated. Source: <a href="https://www.standardreserve.xyz/whitepaper/" rel="noopener">Standard Reserve whitepaper v0.1</a></p>
+    <p>Built by <a href="https://github.com/memosr" rel="noopener">memosr</a></p>
+  </footer>
 </main>
 <script type="module" src="src/js/flow-engine.js"></script>
 </body>

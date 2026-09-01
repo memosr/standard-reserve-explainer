@@ -1,8 +1,10 @@
 // Flow Engine: düzen (masaüstü / mobil), regime toggle, auto play, odak + tooltip.
 import { ENTITIES } from "../data/entities.js";
+import { FLOWS } from "../data/flows.js";
 import { DESKTOP, MOBILE, MOBILE_QUERY } from "../data/layouts.js";
 import { applyLayout } from "./layout.js";
 import { createFocusController } from "./tooltip.js";
+import { createFlowTips } from "./flow-tips.js";
 
 const REGIMES = ["expansion", "contraction"];
 const AUTO_INTERVAL_MS = 10_000;
@@ -10,10 +12,11 @@ const AUTO_INTERVAL_MS = 10_000;
 const engine = document.querySelector(".flow-engine");
 const svg = engine?.querySelector("svg");
 const tooltip = engine?.querySelector(".tooltip");
+const flowTip = engine?.querySelector(".flow-tip");
 const regimeButtons = [...document.querySelectorAll("[data-regime-btn]")];
 const autoButton = document.querySelector("[data-auto-btn]");
 
-if (!engine || !svg || !tooltip || regimeButtons.length === 0 || !autoButton) {
+if (!engine || !svg || !tooltip || !flowTip || regimeButtons.length === 0 || !autoButton) {
   throw new Error("Flow Engine: required elements missing");
 }
 
@@ -62,9 +65,11 @@ applyLayout(svg, currentLayout());
 setRegime(getRegime() || REGIMES[0]);
 
 const focus = createFocusController({ engine, svg, tooltip, entities: ENTITIES });
+const flowTips = createFlowTips({ engine, svg, tip: flowTip, flows: FLOWS });
 
 mobileQuery.addEventListener("change", () => {
   focus.clear();
+  flowTips.hide();
   applyLayout(svg, currentLayout());
 });
 window.addEventListener("resize", () => focus.reposition());
