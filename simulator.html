@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a1a18">
+  <title>Be a Banker, The Standard Reserve</title>
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/global.css">
+  <link rel="stylesheet" href="src/styles/simulator.css">
+</head>
+<body>
+<main>
+  <div class="site-tabbar">
+    <span class="site-brand">The Standard Reserve, explained</span>
+    <nav class="site-tabs" aria-label="Site pages">
+      <a href="index.html" class="site-tab">Flow Engine</a>
+      <a href="simulator.html" class="site-tab" aria-current="page">Be a Banker</a>
+    </nav>
+  </div>
+
+  <header>
+    <h1>Be a Banker</h1>
+    <p>How the mechanics behave under whatever parameters you choose. Not what you'd earn — the protocol hasn't set that yet.</p>
+  </header>
+
+  <p class="redacted-banner">
+    <strong>Protocol parameters are redacted until launch.</strong>
+    Everything below is your assumption, not the protocol's. This models whitepaper mechanics, not price or returns.
+  </p>
+
+  <div class="simulator-grid">
+    <div class="sim-col sim-col-inputs">
+      <section class="panel" aria-labelledby="inputs-title">
+        <h2 id="inputs-title">Your position</h2>
+
+        <div class="slider-row">
+          <div class="slider-row-head">
+            <label for="input-yourBranches">Your branches</label>
+            <output for="input-yourBranches" data-output="yourBranches">1 branch</output>
+          </div>
+          <input type="range" id="input-yourBranches" data-input="yourBranches" min="1" max="10" step="1" value="1">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-row-head">
+            <label for="input-totalBranches">Total branches in system</label>
+            <output for="input-totalBranches" data-output="totalBranches">2,000</output>
+          </div>
+          <input type="range" id="input-totalBranches" data-input="totalBranches" min="1000" max="10000" step="100" value="2000">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-row-head">
+            <label for="input-netFlowPerDay">Daily net ETH flow</label>
+            <output for="input-netFlowPerDay" data-output="netFlowPerDay">+50 ETH/day</output>
+          </div>
+          <input type="range" id="input-netFlowPerDay" data-input="netFlowPerDay" min="-500" max="500" step="10" value="50">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-row-head">
+            <label for="input-daysHeld">Days held</label>
+            <output for="input-daysHeld" data-output="daysHeld">30 days</output>
+          </div>
+          <input type="range" id="input-daysHeld" data-input="daysHeld" min="1" max="365" step="1" value="30">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-row-head">
+            <label for="input-exitPressure">System exit pressure (7d)</label>
+            <output for="input-exitPressure" data-output="exitPressure">5%</output>
+          </div>
+          <input type="range" id="input-exitPressure" data-input="exitPressure" min="0" max="60" step="1" value="5">
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="params-title">
+        <h2 id="params-title">Redacted parameters, you choose</h2>
+
+        <div class="scenario-row" role="radiogroup" aria-label="Parameter scenario">
+          <button type="button" role="radio" aria-checked="false" data-scenario-btn="conservative">Conservative</button>
+          <button type="button" role="radio" aria-checked="true" data-scenario-btn="balanced">Balanced</button>
+          <button type="button" role="radio" aria-checked="false" data-scenario-btn="aggressive">Aggressive</button>
+          <button type="button" class="reset-btn" data-reset-btn>Reset to Balanced</button>
+        </div>
+
+        <div class="param-grid" data-param-grid></div>
+
+        <p class="param-note">
+          The multiplier update rule (§5.2) is redacted. This model applies rate cut and rate raise as
+          multiplicative steps per epoch, clamped to floor and ceiling. That reading matches the whitepaper's
+          narrative but is an assumption.
+        </p>
+      </section>
+    </div>
+
+    <div class="sim-col sim-col-outputs">
+      <article class="panel stat-card">
+        <h3>Daily share</h3>
+        <dl class="stat-pair">
+          <div>
+            <dt>Now</dt>
+            <dd data-out="dailyShareNow">—</dd>
+          </div>
+          <div>
+            <dt>Average (period)</dt>
+            <dd data-out="averageDailyShare">—</dd>
+          </div>
+        </dl>
+        <p class="stat-caption">m changes every epoch, so "now" and the period average can diverge.</p>
+      </article>
+
+      <article class="panel stat-card">
+        <h3>Accrued balance</h3>
+        <p class="stat-big" data-out="accruedBalance">—</p>
+        <p class="stat-caption">Summed epoch by epoch over the days held, m updated each epoch.</p>
+      </article>
+
+      <article class="panel stat-card">
+        <h3>Exit now</h3>
+        <p class="stat-big" data-out="exitNet">—</p>
+        <p class="stat-caption">
+          Resolution fee <span data-out="exitFeeRate">—</span>
+          <span class="badge-saturated" data-out="exitSaturatedBadge" hidden>saturated at ceiling</span>
+        </p>
+        <dl class="stat-pair">
+          <div>
+            <dt>Burned</dt>
+            <dd data-out="exitBurned">—</dd>
+          </div>
+          <div>
+            <dt>To stayers</dt>
+            <dd data-out="exitStayers">—</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="panel stat-card">
+        <h3>System state</h3>
+        <p class="stat-big"><span class="regime-dot" data-regime-dot></span><span data-out="regime">—</span></p>
+        <dl class="stat-pair">
+          <div>
+            <dt>Current m</dt>
+            <dd data-out="currentM">—</dd>
+          </div>
+          <div>
+            <dt data-out="burnedRowLabel">Burned today (est.)</dt>
+            <dd data-out="burnedRowValue">—</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="panel chart-card">
+        <h3>Multiplier vs. cumulative balance</h3>
+        <svg class="m-chart" viewBox="0 0 640 340" role="img" aria-label="Multiplier m on the left axis and cumulative balance in $STANDARD on the right axis, over the days held">
+          <line class="chart-baseline" x1="50" y1="306" x2="582" y2="306"></line>
+          <path class="chart-line chart-line-balance" data-chart="balance-path" d=""></path>
+          <path class="chart-line chart-line-m" data-chart="m-path" d=""></path>
+          <text class="axis-label axis-label-m" data-axis="m-max" x="42" y="32" text-anchor="end">—</text>
+          <text class="axis-label axis-label-m" data-axis="m-min" x="42" y="300" text-anchor="end">—</text>
+          <text class="axis-label axis-label-balance" data-axis="balance-max" x="590" y="32" text-anchor="start">—</text>
+          <text class="axis-label axis-label-balance" data-axis="balance-min" x="590" y="300" text-anchor="start">—</text>
+        </svg>
+        <div class="chart-legend">
+          <span><i class="dot dot-m"></i>multiplier m — left axis</span>
+          <span><i class="dot dot-balance"></i>cumulative balance, $STANDARD — right axis</span>
+        </div>
+        <p class="chart-caption">Day 0 to day <span data-axis="x-max">—</span>.</p>
+      </article>
+    </div>
+  </div>
+
+  <section class="panel chart-card compare-card-wide" aria-label="Exit now vs hold comparison">
+    <h3>Exit now vs. hold <span data-out="compareHoldDays">90</span> more days</h3>
+    <div class="compare-boxes">
+      <div class="compare-box">
+        <p class="compare-label">Exit now, net to wallet</p>
+        <p class="stat-big" data-out="compareExitNet">—</p>
+      </div>
+      <div class="compare-box">
+        <p class="compare-label">Hold, then exit, net to wallet</p>
+        <p class="stat-big" data-out="compareHoldNet">—</p>
+      </div>
+    </div>
+    <p class="chart-caption">
+      Retiring a branch is permanent: it stops earning the moment you do it. Exiting now forfeits
+      <strong data-out="compareShareLost">—</strong> per retired branch, forever.
+    </p>
+  </section>
+
+  <footer class="site-footer">
+    <p>Community explainer, not affiliated. Source: <a href="https://www.standardreserve.xyz/whitepaper/" rel="noopener">Standard Reserve whitepaper v0.1</a></p>
+    <p>Built by <a href="https://github.com/memosr" rel="noopener">memosr</a></p>
+  </footer>
+</main>
+<script type="module" src="src/js/simulator.js"></script>
+</body>
+</html>
