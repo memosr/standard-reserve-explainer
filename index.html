@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a1a18">
+  <title>Flow Engine, The Standard Reserve</title>
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/global.css">
+  <link rel="stylesheet" href="src/styles/flow-engine.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Flow Engine</h1>
+    <p>One currency, one market, one signal, one authority. Six entities and how value moves between them.</p>
+    <ul class="legend" aria-label="Flow legend">
+      <li><span class="swatch swatch-eth"></span>ETH</li>
+      <li><span class="swatch swatch-standard"></span>$STANDARD</li>
+      <li><span class="swatch swatch-burn"></span>burn</li>
+      <li><span class="swatch swatch-reserve"></span>hard reserves</li>
+    </ul>
+  </header>
+
+  <section class="flow-engine" aria-labelledby="flow-title" data-regime="expansion">
+    <h2 id="flow-title" hidden>Flow diagram</h2>
+
+    <div class="regime-bar">
+      <div class="segmented" role="radiogroup" aria-label="Regime">
+        <button type="button" role="radio" aria-checked="true"  data-regime-btn="expansion">Expansion <span class="hint">net flow &gt; 0</span></button>
+        <button type="button" role="radio" aria-checked="false" data-regime-btn="contraction">Contraction <span class="hint">net flow ≤ 0</span></button>
+      </div>
+    </div>
+    <svg viewBox="0 0 1000 640" role="img" aria-label="Flow diagram: Traders, Pool, Vaults, Central Bank, Charter Auction, Bankers">
+      <defs>
+        <marker id="arrow-eth" class="arrow-eth" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+        <marker id="arrow-standard" class="arrow-standard" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+        <marker id="arrow-burn" class="arrow-burn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+        <marker id="arrow-reserve" class="arrow-reserve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z"/>
+        </marker>
+      </defs>
+
+      <!-- ===== Flows (drawn first so boxes sit on top) ===== -->
+
+      <!-- 1. Traders ⇄ Pool -->
+      <g class="flow flow-eth" data-flow="buys" data-from="traders" data-to="pool">
+        <path id="path-buys" d="M260,78 L388,78" marker-end="url(#arrow-eth)"/>
+        <g class="flow-dots dense-expansion">
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-buys"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-0.40s"><mpath href="#path-buys"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-0.80s"><mpath href="#path-buys"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-1.20s"><mpath href="#path-buys"/></animateMotion></circle>
+        </g>
+        <text class="flow-label" x="324" y="66" text-anchor="middle">buys, ETH in</text>
+      </g>
+      <g class="flow flow-eth" data-flow="sells" data-from="pool" data-to="traders">
+        <path id="path-sells" d="M390,104 L262,104" marker-end="url(#arrow-eth)"/>
+        <g class="flow-dots dense-contraction">
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-sells"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-0.40s"><mpath href="#path-sells"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-0.80s"><mpath href="#path-sells"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-1.20s"><mpath href="#path-sells"/></animateMotion></circle>
+        </g>
+        <text class="flow-label" x="324" y="122" text-anchor="middle">sells, ETH out</text>
+      </g>
+
+      <!-- 2. Pool → Central Bank (net flow signal + fees) -->
+      <g class="flow flow-eth" data-flow="netflow" data-from="pool" data-to="bank">
+        <path id="path-netflow" d="M540,140 L540,268" marker-end="url(#arrow-eth)"/>
+        <g class="flow-dots">
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-netflow"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.87s"><mpath href="#path-netflow"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.73s"><mpath href="#path-netflow"/></animateMotion></circle>
+        </g>
+        <text class="flow-label" x="552" y="208">net flow signal</text>
+        <text class="flow-label" x="552" y="223">+ trading fees</text>
+      </g>
+
+      <!-- 3. Central Bank → Bankers (issuance) -->
+      <g class="flow flow-standard" data-flow="issuance" data-from="bank" data-to="bankers">
+        <path d="M470,370 L470,498" marker-end="url(#arrow-standard)"/>
+        <text class="flow-label" x="458" y="392" text-anchor="end">issuance</text>
+        <text class="flow-label" x="458" y="407" text-anchor="end">per branch</text>
+      </g>
+
+      <!-- 4. Bankers → Central Bank (expansion license, burn) -->
+      <g class="flow flow-burn" data-flow="license" data-from="bankers" data-to="bank">
+        <path id="path-license" d="M530,500 L530,372" marker-end="url(#arrow-burn)"/>
+        <g class="flow-dots">
+          <circle r="3.5" fill="#b8b3a3"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-license"/></animateMotion><animate attributeName="r" values="3.5;3.5;5.5;0" keyTimes="0;0.86;0.93;1" dur="2.6s" repeatCount="indefinite" begin="-0.00s"/><animate attributeName="fill" values="#b8b3a3;#b8b3a3;#ffb3a8;#c8453a" keyTimes="0;0.86;0.93;1" dur="2.6s" repeatCount="indefinite" begin="-0.00s"/></circle>
+          <circle r="3.5" fill="#b8b3a3"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.30s"><mpath href="#path-license"/></animateMotion><animate attributeName="r" values="3.5;3.5;5.5;0" keyTimes="0;0.86;0.93;1" dur="2.6s" repeatCount="indefinite" begin="-1.30s"/><animate attributeName="fill" values="#b8b3a3;#b8b3a3;#ffb3a8;#c8453a" keyTimes="0;0.86;0.93;1" dur="2.6s" repeatCount="indefinite" begin="-1.30s"/></circle>
+        </g>
+        <text class="flow-label" x="542" y="430">expansion license</text>
+        <text class="flow-label" x="542" y="445"><tspan class="num">100%</tspan> burned</text>
+      </g>
+
+      <!-- 5. Bankers → Pool (retire branch → mint) -->
+      <g class="flow flow-standard" data-flow="retire" data-from="bankers" data-to="pool">
+        <path id="path-retire" d="M390,545 C 300,545 300,150 388,120" marker-end="url(#arrow-standard)"/>
+        <g class="flow-dots">
+          <circle r="3.5" fill="#b8b3a3"><animateMotion dur="3.5s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-retire"/></animateMotion><animate attributeName="r" values="3.5;3.5;4.5;1.75" keyTimes="0;0.86;0.93;1" dur="3.5s" repeatCount="indefinite" begin="-0.00s"/><animate attributeName="fill" values="#b8b3a3;#b8b3a3;#ffb3a8;#b8b3a3" keyTimes="0;0.86;0.93;1" dur="3.5s" repeatCount="indefinite" begin="-0.00s"/></circle>
+          <circle r="3.5" fill="#b8b3a3"><animateMotion dur="3.5s" repeatCount="indefinite" begin="-1.17s"><mpath href="#path-retire"/></animateMotion><animate attributeName="r" values="3.5;3.5;4.5;1.75" keyTimes="0;0.86;0.93;1" dur="3.5s" repeatCount="indefinite" begin="-1.17s"/><animate attributeName="fill" values="#b8b3a3;#b8b3a3;#ffb3a8;#b8b3a3" keyTimes="0;0.86;0.93;1" dur="3.5s" repeatCount="indefinite" begin="-1.17s"/></circle>
+          <circle r="3.5" fill="#b8b3a3"><animateMotion dur="3.5s" repeatCount="indefinite" begin="-2.33s"><mpath href="#path-retire"/></animateMotion><animate attributeName="r" values="3.5;3.5;4.5;1.75" keyTimes="0;0.86;0.93;1" dur="3.5s" repeatCount="indefinite" begin="-2.33s"/><animate attributeName="fill" values="#b8b3a3;#b8b3a3;#ffb3a8;#b8b3a3" keyTimes="0;0.86;0.93;1" dur="3.5s" repeatCount="indefinite" begin="-2.33s"/></circle>
+        </g>
+        <text class="flow-label" x="288" y="330" text-anchor="end">retire branch</text>
+        <text class="flow-label" x="288" y="345" text-anchor="end">mint, minus fee</text>
+      </g>
+
+      <!-- 6. Charter Auction → Central Bank (ETH) -->
+      <g class="flow flow-eth" data-flow="charter" data-from="auction" data-to="bank">
+        <path id="path-charter" d="M260,540 C 340,540 330,345 388,345" marker-end="url(#arrow-eth)"/>
+        <g class="flow-dots">
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="4.5s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-charter"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="4.5s" repeatCount="indefinite" begin="-2.25s"><mpath href="#path-charter"/></animateMotion></circle>
+        </g>
+        <text class="flow-label" x="150" y="480" text-anchor="middle">charter sale, ETH</text>
+      </g>
+
+      <!-- 7. Central Bank → Vaults (fee routing, 70%) -->
+      <g class="flow flow-eth" data-flow="fees" data-from="bank" data-to="vaults">
+        <path id="path-fees" d="M610,300 C 730,300 850,270 850,142" marker-end="url(#arrow-eth)"/>
+        <g class="flow-dots">
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-fees"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-0.87s"><mpath href="#path-fees"/></animateMotion></circle>
+          <circle r="3.5" fill="#d4a53c"><animateMotion dur="2.6s" repeatCount="indefinite" begin="-1.73s"><mpath href="#path-fees"/></animateMotion></circle>
+        </g>
+        <text class="flow-label" x="655" y="235"><tspan class="num">70%</tspan> of fees</text>
+        <text class="flow-label" x="655" y="250">to active vault</text>
+      </g>
+
+      <!-- 8. Vaults → Pool (contraction: buyback + burn) -->
+      <g class="flow flow-burn" data-flow="buyback" data-from="vaults" data-to="pool" data-regime="contraction">
+        <path id="path-buyback" d="M740,90 L612,90" marker-end="url(#arrow-burn)"/>
+        <text class="flow-label" x="676" y="78" text-anchor="middle">buyback + burn</text>
+        <g class="flow-dots">
+          <circle r="3.5" fill="#c8453a"><animateMotion dur="2.4s" repeatCount="indefinite" begin="-0.00s"><mpath href="#path-buyback"/></animateMotion><animate attributeName="r" values="3.5;3.5;5.5;0" keyTimes="0;0.86;0.93;1" dur="2.4s" repeatCount="indefinite" begin="-0.00s"/><animate attributeName="fill" values="#c8453a;#c8453a;#ffb3a8;#c8453a" keyTimes="0;0.86;0.93;1" dur="2.4s" repeatCount="indefinite" begin="-0.00s"/></circle>
+          <circle r="3.5" fill="#c8453a"><animateMotion dur="2.4s" repeatCount="indefinite" begin="-0.80s"><mpath href="#path-buyback"/></animateMotion><animate attributeName="r" values="3.5;3.5;5.5;0" keyTimes="0;0.86;0.93;1" dur="2.4s" repeatCount="indefinite" begin="-0.80s"/><animate attributeName="fill" values="#c8453a;#c8453a;#ffb3a8;#c8453a" keyTimes="0;0.86;0.93;1" dur="2.4s" repeatCount="indefinite" begin="-0.80s"/></circle>
+          <circle r="3.5" fill="#c8453a"><animateMotion dur="2.4s" repeatCount="indefinite" begin="-1.60s"><mpath href="#path-buyback"/></animateMotion><animate attributeName="r" values="3.5;3.5;5.5;0" keyTimes="0;0.86;0.93;1" dur="2.4s" repeatCount="indefinite" begin="-1.60s"/><animate attributeName="fill" values="#c8453a;#c8453a;#ffb3a8;#c8453a" keyTimes="0;0.86;0.93;1" dur="2.4s" repeatCount="indefinite" begin="-1.60s"/></circle>
+        </g>
+      </g>
+
+      <!-- ===== Entities ===== -->
+
+      <g class="entity" data-entity="traders" transform="translate(40,40)">
+        <rect width="220" height="100"/>
+        <text class="entity-tag" x="16" y="24">01</text>
+        <text class="entity-name" x="16" y="56">Traders</text>
+        <text class="entity-sub" x="16" y="78">anyone, no charter needed</text>
+      </g>
+
+      <g class="entity" data-entity="pool" transform="translate(390,40)">
+        <rect width="220" height="100"/>
+        <text class="entity-tag" x="16" y="24">02</text>
+        <text class="entity-name" x="16" y="56">Pool</text>
+        <text class="entity-sub" x="16" y="78">ETH &lt;&gt; $STANDARD, v4 hook</text>
+      </g>
+
+      <g class="entity" data-entity="vaults" transform="translate(740,40)">
+        <rect width="220" height="100"/>
+        <text class="entity-tag" x="16" y="24">03</text>
+        <text class="entity-name" x="16" y="56">Vaults</text>
+        <text class="entity-sub" x="16" y="78">expansion / contraction</text>
+        <g class="vault-indicator vault-expansion" transform="translate(204,14)">
+          <text x="-10" y="10" text-anchor="end">hard reserves</text>
+          <circle cx="0" cy="6" r="4"/>
+        </g>
+        <g class="vault-indicator vault-contraction" transform="translate(204,14)">
+          <text x="-10" y="10" text-anchor="end">buyback + burn</text>
+          <circle cx="0" cy="6" r="4"/>
+        </g>
+      </g>
+
+      <g class="entity" data-entity="bank" transform="translate(390,270)">
+        <rect width="220" height="100"/>
+        <text class="entity-tag" x="16" y="24">04</text>
+        <text class="entity-name" x="16" y="56">Central Bank</text>
+        <text class="entity-sub" x="16" y="78">~4,000 lines, immutable</text>
+      </g>
+
+      <g class="entity" data-entity="auction" transform="translate(40,500)">
+        <rect width="220" height="100"/>
+        <text class="entity-tag" x="16" y="24">05</text>
+        <text class="entity-name" x="16" y="56">Charter Auction</text>
+        <text class="entity-sub" x="16" y="78">daily Dutch auction, ETH</text>
+      </g>
+
+      <g class="entity" data-entity="bankers" transform="translate(390,500)">
+        <rect width="220" height="100"/>
+        <text class="entity-tag" x="16" y="24">06</text>
+        <text class="entity-name" x="16" y="56">Bankers</text>
+        <text class="entity-sub" x="16" y="78">charters, 1 to 10 branches each</text>
+      </g>
+    </svg>
+
+    <div class="tooltip" role="status" aria-live="polite" hidden>
+      <span class="tooltip-section"></span>
+      <strong class="tooltip-name"></strong>
+      <p class="tooltip-tldr"></p>
+    </div>
+
+    <div class="controls">
+      <button type="button" class="auto-btn" aria-pressed="false" data-auto-btn>Auto <span class="hint">10s</span></button>
+    </div>
+  </section>
+</main>
+<script type="module" src="src/js/flow-engine.js"></script>
+</body>
+</html>

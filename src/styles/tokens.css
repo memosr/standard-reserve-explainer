@@ -1,0 +1,30 @@
+:root {
+  /* surfaces */
+  --color-bg: #1a1a18;
+  --color-box: #24241f;
+  --color-box-stroke: #3a3a33;
+  --color-text: #e8e4d8;
+  --color-text-muted: #8f8b7f;
+
+  /* flow semantics */
+  --color-eth: #d4a53c;
+  --color-standard: #b8b3a3;
+  --color-burn: #c8453a;
+  --color-reserve: #5fa66b;
+
+  /* typography */
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --text-base: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+  --text-title: clamp(1.6rem, 1.2rem + 2vw, 2.6rem);
+
+  /* spacing */
+  --space-page: clamp(1rem, 0.5rem + 3vw, 3rem);
+
+  /* motion (kullanılacak, hafta 1 adım 2) */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-flow: 4s;
+  --duration-regime: 10s;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
