@@ -1,7 +1,12 @@
 # The Standard Reserve: Whitepaper v0.1 (temiz kopya)
 
 > Kaynak: https://www.standardreserve.xyz/whitepaper/
-> Not: Sitedeki bazı sayısal parametreler JS ile render edildiği için kopyada boş geldi. Bunlar `[TODO]` olarak işaretlendi. Siteden bakıp doldur.
+> Not: Sitedeki sayısal parametreler JS render sorunu değil, kasıtlı olarak gizli. Sitenin kendi kaynak kodunda
+> (`assets/whitepaper-*.js`) bu değerler `wp-redact` bileşeniyle sarılı ve `aria-label="Redacted until launch"`
+> etiketi taşıyor — yani rakamlar lansmana kadar resmi olarak yayınlanmıyor, sadece bir placeholder genişliği
+> (`w:`) render ediliyor, gerçek sayı yok. Playwright/headless browser ile sayfa tam render edilse bile bu
+> alanlar boş kalır. Bunlar `[TODO]` olarak işaretli kalmalı; tahmini değer yazılmadı. Detay için
+> `docs/parameters.md` içindeki not bölümüne bak.
 > Resmi uyarı: Bu bir tasarım özeti, implementasyon spesifikasyonu değil. Tek kanonik deployment standardreserve.xyz.
 
 ---
