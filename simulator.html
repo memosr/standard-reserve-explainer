@@ -16,15 +16,18 @@
     <span class="site-brand">The Standard Reserve, explained</span>
     <nav class="site-tabs" aria-label="Site pages">
       <a href="index.html" class="site-tab">Flow Engine</a>
-      <!-- Be a Banker tab hidden while simulator.html is unlisted — uncomment to restore:
+      <!-- Be a Banker tab hidden while simulator.html is unlisted. Uncomment to restore:
       <a href="simulator.html" class="site-tab" aria-current="page">Be a Banker</a>
+      -->
+      <!-- The Bank Is Code tab hidden while story.html is a skeleton. Uncomment to restore:
+      <a href="story.html" class="site-tab">The Bank Is Code</a>
       -->
     </nav>
   </div>
 
   <header>
     <h1>Be a Banker</h1>
-    <p>How the mechanics behave under whatever parameters you choose. Not what you'd earn — the protocol hasn't set that yet.</p>
+    <p>How the mechanics behave under whatever parameters you choose. Not what you'd earn. The protocol hasn't set that yet.</p>
   </header>
 
   <p class="redacted-banner">
@@ -104,11 +107,11 @@
         <dl class="stat-pair">
           <div>
             <dt>Now</dt>
-            <dd data-out="dailyShareNow">—</dd>
+            <dd data-out="dailyShareNow">not set</dd>
           </div>
           <div>
             <dt>Average (period)</dt>
-            <dd data-out="averageDailyShare">—</dd>
+            <dd data-out="averageDailyShare">not set</dd>
           </div>
         </dl>
         <p class="stat-caption">m changes every epoch, so "now" and the period average can diverge.</p>
@@ -116,40 +119,40 @@
 
       <article class="panel stat-card">
         <h3>Accrued balance</h3>
-        <p class="stat-big" data-out="accruedBalance">—</p>
+        <p class="stat-big" data-out="accruedBalance">not set</p>
         <p class="stat-caption">Summed epoch by epoch over the days held, m updated each epoch.</p>
       </article>
 
       <article class="panel stat-card">
         <h3>Exit now</h3>
-        <p class="stat-big" data-out="exitNet">—</p>
+        <p class="stat-big" data-out="exitNet">not set</p>
         <p class="stat-caption">
-          Resolution fee <span data-out="exitFeeRate">—</span>
+          Resolution fee <span data-out="exitFeeRate">not set</span>
           <span class="badge-saturated" data-out="exitSaturatedBadge" hidden>saturated at ceiling</span>
         </p>
         <dl class="stat-pair">
           <div>
             <dt>Burned</dt>
-            <dd data-out="exitBurned">—</dd>
+            <dd data-out="exitBurned">not set</dd>
           </div>
           <div>
             <dt>To stayers</dt>
-            <dd data-out="exitStayers">—</dd>
+            <dd data-out="exitStayers">not set</dd>
           </div>
         </dl>
       </article>
 
       <article class="panel stat-card">
         <h3>System state</h3>
-        <p class="stat-big"><span class="regime-dot" data-regime-dot></span><span data-out="regime">—</span></p>
+        <p class="stat-big"><span class="regime-dot" data-regime-dot></span><span data-out="regime">not set</span></p>
         <dl class="stat-pair">
           <div>
             <dt>Current m</dt>
-            <dd data-out="currentM">—</dd>
+            <dd data-out="currentM">not set</dd>
           </div>
           <div>
             <dt data-out="burnedRowLabel">Burned today (est.)</dt>
-            <dd data-out="burnedRowValue">—</dd>
+            <dd data-out="burnedRowValue">not set</dd>
           </div>
         </dl>
       </article>
@@ -160,16 +163,16 @@
           <line class="chart-baseline" x1="50" y1="306" x2="582" y2="306"></line>
           <path class="chart-line chart-line-balance" data-chart="balance-path" d=""></path>
           <path class="chart-line chart-line-m" data-chart="m-path" d=""></path>
-          <text class="axis-label axis-label-m" data-axis="m-max" x="42" y="32" text-anchor="end">—</text>
-          <text class="axis-label axis-label-m" data-axis="m-min" x="42" y="300" text-anchor="end">—</text>
-          <text class="axis-label axis-label-balance" data-axis="balance-max" x="590" y="32" text-anchor="start">—</text>
-          <text class="axis-label axis-label-balance" data-axis="balance-min" x="590" y="300" text-anchor="start">—</text>
+          <text class="axis-label axis-label-m" data-axis="m-max" x="42" y="32" text-anchor="end">not set</text>
+          <text class="axis-label axis-label-m" data-axis="m-min" x="42" y="300" text-anchor="end">not set</text>
+          <text class="axis-label axis-label-balance" data-axis="balance-max" x="590" y="32" text-anchor="start">not set</text>
+          <text class="axis-label axis-label-balance" data-axis="balance-min" x="590" y="300" text-anchor="start">not set</text>
         </svg>
         <div class="chart-legend">
-          <span><i class="dot dot-m"></i>multiplier m — left axis</span>
-          <span><i class="dot dot-balance"></i>cumulative balance, $STANDARD — right axis</span>
+          <span><i class="dot dot-m"></i>multiplier m, left axis</span>
+          <span><i class="dot dot-balance"></i>cumulative balance, $STANDARD, right axis</span>
         </div>
-        <p class="chart-caption">Day 0 to day <span data-axis="x-max">—</span>.</p>
+        <p class="chart-caption">Day 0 to day <span data-axis="x-max">not set</span>.</p>
       </article>
     </div>
   </div>
@@ -179,16 +182,16 @@
     <div class="compare-boxes">
       <div class="compare-box">
         <p class="compare-label">Exit now, net to wallet</p>
-        <p class="stat-big" data-out="compareExitNet">—</p>
+        <p class="stat-big" data-out="compareExitNet">not set</p>
       </div>
       <div class="compare-box">
         <p class="compare-label">Hold, then exit, net to wallet</p>
-        <p class="stat-big" data-out="compareHoldNet">—</p>
+        <p class="stat-big" data-out="compareHoldNet">not set</p>
       </div>
     </div>
     <p class="chart-caption">
       Retiring a branch is permanent: it stops earning the moment you do it. Exiting now forfeits
-      <strong data-out="compareShareLost">—</strong> per retired branch, forever.
+      <strong data-out="compareShareLost">not set</strong> per retired branch, forever.
     </p>
   </section>
 

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a1a18">
+  <meta name="robots" content="noindex">
+  <title>The Bank Is Code, The Standard Reserve</title>
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/global.css">
+  <link rel="stylesheet" href="src/styles/story.css">
+</head>
+<body>
+<main>
+  <div class="site-tabbar">
+    <span class="site-brand">The Standard Reserve, explained</span>
+    <nav class="site-tabs" aria-label="Site pages">
+      <a href="index.html" class="site-tab">Flow Engine</a>
+      <!-- Be a Banker tab hidden while simulator.html is unlisted. Uncomment to restore:
+      <a href="simulator.html" class="site-tab">Be a Banker</a>
+      -->
+      <!-- The Bank Is Code tab hidden while story.html is a skeleton. Uncomment to restore:
+      <a href="story.html" class="site-tab" aria-current="page">The Bank Is Code</a>
+      -->
+    </nav>
+  </div>
+
+  <div class="story-track">
+
+    <section class="story-section story-section-opening" id="s00" data-story-index="0" aria-label="Opening">
+      <div class="story-section-inner">
+        <h1 class="story-opening-line">The bank is code.</h1>
+        <div class="story-visual story-visual-static" data-visual="opening-code">
+          <svg class="opening-code-svg" viewBox="0 0 720 320" role="img" aria-label="Blurred stream of code scrolling upward" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <filter id="code-blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3"/>
+              </filter>
+              <clipPath id="code-clip"><rect x="0" y="0" width="720" height="320"/></clipPath>
+            </defs>
+            <g clip-path="url(#code-clip)">
+              <g class="code-stream" filter="url(#code-blur)" data-code-stream></g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s01" data-story-index="1" aria-labelledby="title-01">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">01</span>
+          <h2 id="title-01">The problem</h2>
+          <p>An earlier generation of reserve protocols paid fixed emissions no matter what the market wanted. Demand went up, demand went down. The issuance schedule never noticed.</p>
+        </div>
+        <div class="story-visual story-visual-static" data-visual="problem-lines">
+          <svg viewBox="0 0 440 300" role="img" aria-label="Fixed emissions stay flat while demand declines, opening a gap">
+            <line class="problem-emission-line" x1="40" y1="90" x2="400" y2="90"/>
+            <path class="problem-demand-line" d="M40,110 C 140,130 260,190 400,250"/>
+            <line class="problem-gap-connector" style="animation-delay:0s" x1="140" y1="90" x2="140" y2="130"/>
+            <line class="problem-gap-connector" style="animation-delay:.4s" x1="260" y1="90" x2="260" y2="190"/>
+            <line class="problem-gap-connector" style="animation-delay:.8s" x1="380" y1="90" x2="380" y2="246"/>
+            <text class="problem-line-label problem-emission-label" x="396" y="80" text-anchor="end">emissions</text>
+            <text class="problem-line-label problem-demand-label" x="396" y="268" text-anchor="end">demand</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s02" data-story-index="2" aria-labelledby="title-02">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">02</span>
+          <h2 id="title-02">One signal</h2>
+          <p>Net ETH flow through the pool replaces the guesswork. Buying pressure means expansion. Selling pressure means contraction. One number, read continuously.</p>
+        </div>
+        <div class="story-visual story-visual-interactive" data-widget="scale">
+          <svg class="scale-svg" viewBox="0 0 440 300" role="img" aria-label="Balance scale showing net ETH flow through the pool">
+            <line class="scale-post" x1="220" y1="60" x2="220" y2="200"/>
+            <polygon class="scale-fulcrum" points="220,200 200,232 240,232"/>
+            <line class="scale-base" x1="176" y1="232" x2="264" y2="232"/>
+            <g class="scale-beam" data-scale-beam>
+              <line class="scale-beam-line" x1="80" y1="60" x2="360" y2="60"/>
+              <line class="scale-chain" x1="80" y1="60" x2="80" y2="110"/>
+              <line class="scale-chain" x1="360" y1="60" x2="360" y2="110"/>
+              <ellipse class="scale-pan scale-pan-buys" cx="80" cy="118" rx="46" ry="14"/>
+              <ellipse class="scale-pan scale-pan-sells" cx="360" cy="118" rx="46" ry="14"/>
+            </g>
+            <text class="scale-side-label scale-side-buys" x="80" y="268" text-anchor="middle">buys, ETH in</text>
+            <text class="scale-side-label scale-side-sells" x="360" y="268" text-anchor="middle">sells, ETH out</text>
+          </svg>
+          <div class="widget-controls">
+            <div class="scale-readout">
+              <span class="scale-value" data-scale-value>0</span>
+              <span class="scale-regime" data-scale-regime data-regime="contraction">contraction</span>
+            </div>
+            <input type="range" class="widget-slider" min="-100" max="100" step="1" value="0" data-scale-slider aria-label="Net ETH flow through the pool, -100 to 100">
+            <p class="widget-note">net flow = ETH in minus ETH out, measured at the pool</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s03" data-story-index="3" aria-labelledby="title-03">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">03</span>
+          <h2 id="title-03">The currency</h2>
+          <p>$STANDARD caps at 1,000,000,000. 100,000,000 mint at genesis as protocol-owned liquidity, locked forever. The remaining 900,000,000 is the entire issuance budget. When it's gone, base issuance stops for good.</p>
+        </div>
+        <div class="story-visual story-visual-static" data-visual="currency-bar">
+          <svg viewBox="0 0 440 200" role="img" aria-label="Supply bar: 100 million genesis locked, 900 million issuance budget, 1 billion hard cap">
+            <defs>
+              <clipPath id="bar-clip"><rect x="20" y="70" width="400" height="46" rx="8"/></clipPath>
+              <pattern id="genesis-hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+                <line class="genesis-hatch-line" x1="0" y1="0" x2="0" y2="6"/>
+              </pattern>
+              <pattern id="issuance-stripe" width="18" height="10" patternUnits="userSpaceOnUse">
+                <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="18 0" dur="6s" repeatCount="indefinite"/>
+                <rect class="issuance-stripe-bg" width="18" height="10"/>
+                <line class="issuance-stripe-line" x1="0" y1="0" x2="0" y2="10"/>
+              </pattern>
+            </defs>
+            <rect class="currency-bar-track" x="20" y="70" width="400" height="46" rx="8"/>
+            <g clip-path="url(#bar-clip)">
+              <rect class="currency-bar-genesis" x="20" y="70" width="40" height="46" fill="url(#genesis-hatch)"/>
+              <rect class="currency-bar-issuance" x="60" y="70" width="360" height="46" fill="url(#issuance-stripe)"/>
+            </g>
+            <rect class="currency-bar-outline" x="20" y="70" width="400" height="46" rx="8"/>
+            <g class="currency-lock" transform="translate(34,86)">
+              <rect class="currency-lock-body" x="0" y="6" width="12" height="9" rx="2"/>
+              <path class="currency-lock-shackle" d="M2,6 V3.5 a4,4 0 0 1 8,0 V6"/>
+            </g>
+            <text class="currency-label" x="40" y="136" text-anchor="middle">100M genesis</text>
+            <text class="currency-label" x="240" y="136" text-anchor="middle">900M issuance budget</text>
+            <text class="currency-cap-label" x="420" y="58" text-anchor="end">1,000,000,000 cap</text>
+            <text class="currency-caption" x="220" y="172" text-anchor="middle">circulating supply is a receipt</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s04" data-story-index="4" aria-labelledby="title-04">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">04</span>
+          <h2 id="title-04">The charter</h2>
+          <p>1,000 Founding Charters at genesis. Free, soulbound, one per wallet. After that, every new charter is sold in a daily Dutch auction, priced in ETH.</p>
+        </div>
+        <div class="story-visual story-visual-static" data-visual="charter-card">
+          <div class="charter-card-stage">
+            <svg class="charter-card-svg" viewBox="0 0 220 280" role="img" aria-label="Soulbound founding charter card, one of one thousand at genesis">
+              <rect class="charter-nft-card" x="10" y="10" width="200" height="260" rx="16"/>
+              <rect class="charter-nft-inner" x="26" y="26" width="168" height="168" rx="10"/>
+              <text class="charter-nft-glyph" x="110" y="128" text-anchor="middle">§</text>
+              <text class="charter-nft-eyebrow" x="26" y="216">FOUNDING CHARTER</text>
+              <text class="charter-nft-count" x="26" y="250">1,000</text>
+              <g class="charter-soulbound-tag" transform="translate(148,206)">
+                <rect x="0" y="0" width="52" height="18" rx="9"/>
+                <text x="26" y="13" text-anchor="middle">SOULBOUND</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s05" data-story-index="5" aria-labelledby="title-05">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">05</span>
+          <h2 id="title-05">Branches</h2>
+          <p>Every charter opens with 1 branch, up to 10. Every branch beyond the first is bought by burning $STANDARD. Growth is a supply sink.</p>
+        </div>
+        <div class="story-visual story-visual-interactive" data-widget="branches">
+          <svg class="branches-svg" viewBox="0 0 440 200" role="img" aria-label="Charter card with branch slots, one to ten">
+            <rect class="charter-card" x="10" y="10" width="420" height="180" rx="14"/>
+            <text class="charter-label" x="30" y="34">Charter</text>
+            <g class="branch-slots" data-branch-slots>
+              <g class="branch-slot" data-slot="1"><rect x="30" y="60" width="63" height="47" rx="8"/><text x="61.5" y="84">1</text></g>
+              <g class="branch-slot" data-slot="2"><rect x="109" y="60" width="63" height="47" rx="8"/><text x="140.5" y="84">2</text></g>
+              <g class="branch-slot" data-slot="3"><rect x="188" y="60" width="63" height="47" rx="8"/><text x="219.5" y="84">3</text></g>
+              <g class="branch-slot" data-slot="4"><rect x="267" y="60" width="63" height="47" rx="8"/><text x="298.5" y="84">4</text></g>
+              <g class="branch-slot" data-slot="5"><rect x="346" y="60" width="63" height="47" rx="8"/><text x="377.5" y="84">5</text></g>
+              <g class="branch-slot" data-slot="6"><rect x="30" y="123" width="63" height="47" rx="8"/><text x="61.5" y="147">6</text></g>
+              <g class="branch-slot" data-slot="7"><rect x="109" y="123" width="63" height="47" rx="8"/><text x="140.5" y="147">7</text></g>
+              <g class="branch-slot" data-slot="8"><rect x="188" y="123" width="63" height="47" rx="8"/><text x="219.5" y="147">8</text></g>
+              <g class="branch-slot" data-slot="9"><rect x="267" y="123" width="63" height="47" rx="8"/><text x="298.5" y="147">9</text></g>
+              <g class="branch-slot" data-slot="10"><rect x="346" y="123" width="63" height="47" rx="8"/><text x="377.5" y="147">10</text></g>
+            </g>
+          </svg>
+          <div class="widget-controls">
+            <dl class="branches-stats">
+              <div>
+                <dt>Your daily share</dt>
+                <dd data-branches-share>1×</dd>
+              </div>
+              <div>
+                <dt>$STANDARD burned</dt>
+                <dd class="burn-bar">
+                  <span class="burn-bar-track"><span class="burn-bar-fill" data-branches-burn-bar></span></span>
+                </dd>
+              </div>
+            </dl>
+            <div class="branches-actions">
+              <button type="button" class="branches-open-btn" data-branches-open>Open a branch</button>
+              <button type="button" class="branches-reset-btn" data-branches-reset>Reset</button>
+            </div>
+            <p class="widget-note">License prices are redacted until launch. Relative scale shown.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s06" data-story-index="6" aria-labelledby="title-06">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">06</span>
+          <h2 id="title-06">Issuance</h2>
+          <p>Each day's issue is split pro rata across every branch in the system. Your cut is your branches divided by all branches, so the same issue spreads thinner as the system grows.</p>
+        </div>
+        <div class="story-visual story-visual-static" data-visual="issuance-pie">
+          <svg class="issuance-pie-svg" viewBox="0 0 300 350" role="img" aria-label="Pie chart showing issuance split into 3, then 30, then 300 slices, with your slice shrinking each time while the total stays constant. Branch counts are illustrative examples, not whitepaper figures">
+            <text class="issuance-pie-tag" x="150" y="24" text-anchor="middle">ILLUSTRATIVE</text>
+            <circle class="issuance-pie-base" cx="150" cy="150" r="110"/>
+            <g class="issuance-pie-state issuance-pie-state-a" data-pie-state="a"></g>
+            <g class="issuance-pie-state issuance-pie-state-b" data-pie-state="b"></g>
+            <g class="issuance-pie-state issuance-pie-state-c" data-pie-state="c"></g>
+            <text class="issuance-pie-disclaimer" x="150" y="340" text-anchor="middle">illustrative example branch counts, not whitepaper figures</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s07" data-story-index="7" aria-labelledby="title-07">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">07</span>
+          <h2 id="title-07">Regimes</h2>
+          <p>One system, two faces. Net inflow: reserves stack. Net outflow: buyback and burn. The mechanism doesn't pick a side. It responds to the one signal.</p>
+        </div>
+        <div class="story-visual story-visual-static" data-visual="regimes-split">
+          <svg viewBox="0 0 440 260" role="img" aria-label="Screen split between expansion on the left and contraction on the right">
+            <rect class="regime-half regime-half-expansion" x="0" y="0" width="220" height="260"/>
+            <rect class="regime-half regime-half-contraction" x="220" y="0" width="220" height="260"/>
+            <line class="regime-divider" x1="220" y1="10" x2="220" y2="250"/>
+            <text class="regime-half-label regime-half-label-expansion" x="110" y="40" text-anchor="middle">EXPANSION</text>
+            <text class="regime-half-label regime-half-label-contraction" x="330" y="40" text-anchor="middle">CONTRACTION</text>
+            <g class="regime-particles-expansion">
+              <circle class="regime-particle" cx="60" cy="190" r="4"/>
+              <circle class="regime-particle" cx="110" cy="210" r="4"/>
+              <circle class="regime-particle" cx="160" cy="170" r="4"/>
+              <circle class="regime-particle" cx="85" cy="150" r="4"/>
+            </g>
+            <g class="regime-particles-contraction">
+              <circle class="regime-particle" cx="280" cy="190" r="4"/>
+              <circle class="regime-particle" cx="330" cy="210" r="4"/>
+              <circle class="regime-particle" cx="380" cy="170" r="4"/>
+              <circle class="regime-particle" cx="355" cy="150" r="4"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s08" data-story-index="8" aria-labelledby="title-08">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">08</span>
+          <h2 id="title-08">The exit</h2>
+          <p>A classic bank run empties the vault for whoever's fastest. Here it's inverted: leavers pay a resolution fee, and half of that fee is burned, half flows to whoever stayed.</p>
+        </div>
+        <div class="story-visual story-visual-interactive" data-widget="exit">
+          <svg class="exit-svg" viewBox="0 0 440 260" role="img" aria-label="Bankers leaving versus bankers staying">
+            <text class="exit-zone-label" x="92" y="30" text-anchor="middle">Leaving</text>
+            <text class="exit-zone-label" x="352" y="30" text-anchor="middle">Staying</text>
+            <g class="exit-dots" data-exit-dots></g>
+            <text class="exit-gain" data-exit-gain x="352" y="232" text-anchor="middle">+0.0% received</text>
+          </svg>
+          <div class="widget-controls">
+            <div class="exit-readout">
+              <span class="exit-readout-label">How many are running</span>
+              <span class="exit-readout-value" data-exit-running>0%</span>
+              <span class="exit-fee-value" data-exit-fee>exit fee 5.0%</span>
+            </div>
+            <input type="range" class="widget-slider" min="0" max="60" step="1" value="0" data-exit-slider aria-label="Share of bankers exiting, 0 to 60 percent">
+            <p class="widget-note">Half of every exit fee is burned. Half is paid to those who stayed.</p>
+            <p class="widget-note">Fee floor, ceiling and saturation are redacted. Curve shown is representative.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s09" data-story-index="9" aria-labelledby="title-09">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">09</span>
+          <h2 id="title-09">Flywheels</h2>
+          <p>Four loops, one property in common: every path a banker can take either burns $STANDARD or stacks reserves. There's no neutral move.</p>
+        </div>
+        <div class="story-visual story-visual-static" data-visual="flywheels">
+          <svg viewBox="0 0 380 300" role="img" aria-label="Four interlocked flywheels turning, each releasing a small burn every rotation">
+            <circle class="flywheel-ring flywheel-ring-1" cx="210" cy="100" r="55"/>
+            <circle class="flywheel-ring flywheel-ring-2" cx="275" cy="165" r="55"/>
+            <circle class="flywheel-ring flywheel-ring-3" cx="210" cy="230" r="55"/>
+            <circle class="flywheel-ring flywheel-ring-4" cx="145" cy="165" r="55"/>
+            <circle class="flywheel-spark" r="4">
+              <animateMotion dur="8s" repeatCount="indefinite" path="M265,100 A55,55 0 1,0 155,100 A55,55 0 1,0 265,100"/>
+              <animate attributeName="r" values="4;4;9;4;4" keyTimes="0;0.85;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="flywheel-spark" r="4">
+              <animateMotion dur="9s" repeatCount="indefinite" path="M330,165 A55,55 0 1,0 220,165 A55,55 0 1,0 330,165"/>
+              <animate attributeName="r" values="4;4;9;4;4" keyTimes="0;0.85;0.9;0.95;1" dur="9s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="flywheel-spark" r="4">
+              <animateMotion dur="10s" repeatCount="indefinite" path="M265,230 A55,55 0 1,0 155,230 A55,55 0 1,0 265,230"/>
+              <animate attributeName="r" values="4;4;9;4;4" keyTimes="0;0.85;0.9;0.95;1" dur="10s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="flywheel-spark" r="4">
+              <animateMotion dur="11s" repeatCount="indefinite" path="M200,165 A55,55 0 1,0 90,165 A55,55 0 1,0 200,165"/>
+              <animate attributeName="r" values="4;4;9;4;4" keyTimes="0;0.85;0.9;0.95;1" dur="11s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="s10" data-story-index="10" aria-labelledby="title-10">
+      <div class="story-section-inner">
+        <div class="story-text">
+          <span class="story-kicker">10</span>
+          <h2 id="title-10">The unknown</h2>
+          <p>The whitepaper carries 51 redacted fields: base issuance, the multiplier, epoch length, fee curves. The mechanics are fixed. The numbers aren't public yet.</p>
+          <p class="story-links">
+            <a href="index.html">Explore the Flow Engine →</a>
+            <a href="simulator.html">Try Be a Banker →</a>
+          </p>
+        </div>
+        <div class="story-visual story-visual-static" data-visual="redacted-params">
+          <svg class="params-svg" viewBox="0 0 440 420" role="img" aria-label="List of ten redacted protocol parameters, each shown as a pulsing blacked-out box, with a total count of 51 redacted fields">
+            <defs>
+              <pattern id="redact-hatch" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+                <line class="params-redact-hatch-line" x1="0" y1="0" x2="0" y2="5"/>
+              </pattern>
+            </defs>
+            <g data-params-rows></g>
+            <line class="params-divider" x1="20" y1="366" x2="420" y2="366"/>
+            <g class="params-count" transform="translate(20,404)">
+              <text class="params-count-value" x="0" y="0">51</text>
+              <text class="params-count-label" x="52" y="0">REDACTED FIELDS</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <nav class="story-progress" aria-label="Story progress">
+    <button type="button" class="story-dot" data-dot="1" aria-current="false" aria-label="Section 01, The problem"></button>
+    <button type="button" class="story-dot" data-dot="2" aria-current="false" aria-label="Section 02, One signal"></button>
+    <button type="button" class="story-dot" data-dot="3" aria-current="false" aria-label="Section 03, The currency"></button>
+    <button type="button" class="story-dot" data-dot="4" aria-current="false" aria-label="Section 04, The charter"></button>
+    <button type="button" class="story-dot" data-dot="5" aria-current="false" aria-label="Section 05, Branches"></button>
+    <button type="button" class="story-dot" data-dot="6" aria-current="false" aria-label="Section 06, Issuance"></button>
+    <button type="button" class="story-dot" data-dot="7" aria-current="false" aria-label="Section 07, Regimes"></button>
+    <button type="button" class="story-dot" data-dot="8" aria-current="false" aria-label="Section 08, The exit"></button>
+    <button type="button" class="story-dot" data-dot="9" aria-current="false" aria-label="Section 09, Flywheels"></button>
+    <button type="button" class="story-dot" data-dot="10" aria-current="false" aria-label="Section 10, The unknown"></button>
+  </nav>
+
+  <footer class="site-footer">
+    <p>Community explainer, not affiliated. Source: <a href="https://www.standardreserve.xyz/whitepaper/" rel="noopener">Standard Reserve whitepaper v0.1</a></p>
+    <p>Built by <a href="https://github.com/memosr" rel="noopener">memosr</a></p>
+  </footer>
+</main>
+<script type="module" src="src/js/story.js"></script>
+<script type="module" src="src/js/story-widgets.js"></script>
+<script type="module" src="src/js/story-visuals.js"></script>
+</body>
+</html>
