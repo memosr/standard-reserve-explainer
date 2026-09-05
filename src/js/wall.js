@@ -26,15 +26,19 @@ const archiveCard = ({ author, url, context, hasMedia }) => `
     </div>
   </a>`;
 
-const mineCard = ({ title, url, note, image }) => `
-  <a class="wall-card wall-card-mine" href="${url}" target="_blank" rel="noopener">
+const mineCard = ({ title, url, note, image }) => {
+  const tag = url ? "a" : "div";
+  const linkAttrs = url ? ` href="${url}" target="_blank" rel="noopener"` : "";
+  return `
+  <${tag} class="wall-card wall-card-mine"${linkAttrs}>
     ${image ? `<img class="wall-card-mine-image" src="${image}" alt="" loading="lazy" onerror="this.remove()">` : ""}
     <div class="wall-card-body">
       <h3 class="wall-card-title">${escapeHtml(title)}</h3>
-      <p class="wall-card-note">${escapeHtml(note)}</p>
-      <span class="wall-card-link">${X_ICON} View on X</span>
+      ${note ? `<p class="wall-card-note">${escapeHtml(note)}</p>` : ""}
+      ${url ? `<span class="wall-card-link">${X_ICON} View on X</span>` : ""}
     </div>
-  </a>`;
+  </${tag}>`;
+};
 
 const renderSection = (listName, items, cardFn) => {
   const grid = document.querySelector(`[data-wall-list="${listName}"]`);
