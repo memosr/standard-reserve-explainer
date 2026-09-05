@@ -3,8 +3,9 @@ const X_ICON = `<svg class="wall-x-icon" viewBox="0 0 24 24" aria-hidden="true">
 const escapeHtml = (value) =>
   value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-const researchCard = ({ author, url, note }) => `
+const researchCard = ({ author, url, note, image }) => `
   <a class="wall-card wall-card-research" href="${url}" target="_blank" rel="noopener">
+    ${image ? `<img class="wall-card-image" src="${image}" alt="" loading="lazy" onerror="this.remove()">` : ""}
     <div class="wall-card-body">
       <div class="wall-card-head">
         <span class="wall-card-author">${escapeHtml(author)}</span>
@@ -14,13 +15,11 @@ const researchCard = ({ author, url, note }) => `
     </div>
   </a>`;
 
-const archiveCard = ({ author, url, context, hasMedia }) => `
+const archiveCard = ({ author, url, context, image }) => `
   <a class="wall-card wall-card-archive" href="${url}" target="_blank" rel="noopener">
+    ${image ? `<img class="wall-card-image" src="${image}" alt="" loading="lazy" onerror="this.remove()">` : ""}
     <div class="wall-card-body">
-      <div class="wall-card-head">
-        <span class="wall-card-author">${escapeHtml(author)}</span>
-        ${hasMedia ? '<span class="wall-badge-media">Media</span>' : ""}
-      </div>
+      <span class="wall-card-author">${escapeHtml(author)}</span>
       <p class="wall-card-context">${escapeHtml(context)}</p>
       <span class="wall-card-link">${X_ICON} View on X</span>
     </div>
@@ -31,7 +30,7 @@ const mineCard = ({ title, url, note, image }) => {
   const linkAttrs = url ? ` href="${url}" target="_blank" rel="noopener"` : "";
   return `
   <${tag} class="wall-card wall-card-mine"${linkAttrs}>
-    ${image ? `<img class="wall-card-mine-image" src="${image}" alt="" loading="lazy" onerror="this.remove()">` : ""}
+    ${image ? `<img class="wall-card-image" src="${image}" alt="" loading="lazy" onerror="this.remove()">` : ""}
     <div class="wall-card-body">
       <h3 class="wall-card-title">${escapeHtml(title)}</h3>
       ${note ? `<p class="wall-card-note">${escapeHtml(note)}</p>` : ""}
