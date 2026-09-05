@@ -1,0 +1,67 @@
+{
+  "research": [
+    {
+      "author": "@hautism",
+      "url": "https://x.com/hautism/status/2094497545544450271",
+      "note": "One of the stronger breakdowns circulating so far."
+    }
+  ],
+  "archive": [
+    {
+      "author": "@0xbeans",
+      "url": "https://x.com/0xbeans/status/2093725196670877984",
+      "context": "From the team.",
+      "hasMedia": true
+    },
+    {
+      "author": "@Neslie_eth",
+      "url": "https://x.com/Neslie_eth/status/2093956083165581734",
+      "context": "Everything in the whitepaper is coming to life.",
+      "hasMedia": true
+    },
+    {
+      "author": "@waleswoosh",
+      "url": "https://x.com/waleswoosh/status/2093657781740220919",
+      "context": "Dope project, keep an eye on it.",
+      "hasMedia": false
+    },
+    {
+      "author": "@gussulliman",
+      "url": "https://x.com/gussulliman/status/2093380545132511729",
+      "context": "Sometimes you simply have to shoot your shot.",
+      "hasMedia": true
+    },
+    {
+      "author": "@ti_btc",
+      "url": "https://x.com/ti_btc/status/2093331319900013036",
+      "context": "Looks good.",
+      "hasMedia": false
+    },
+    {
+      "author": "@OlricOnlyfornft",
+      "url": "https://x.com/OlricOnlyfornft/status/2093330136267395341",
+      "context": "Just checked, eligible.",
+      "hasMedia": true
+    }
+  ],
+  "mine": [
+    {
+      "title": "The Bank Is Code",
+      "url": "https://x.com/memosrETH/status/2095765051114135558",
+      "note": "A ten section scrollable explainer of the whole protocol.",
+      "image": "assets/img/flow-expansion.png"
+    },
+    {
+      "title": "Meme",
+      "url": "https://x.com/memosrETH/status/2095786418387792169",
+      "note": "Made this one.",
+      "image": ""
+    },
+    {
+      "title": "Meme",
+      "url": "https://x.com/memosrETH/status/2095882828332351523",
+      "note": "And this one.",
+      "image": ""
+    }
+  ]
+}

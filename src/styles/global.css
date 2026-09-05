@@ -39,7 +39,19 @@ header { margin-bottom: 1.5rem; }
   color: var(--color-text-muted);
   white-space: nowrap;
 }
-.site-tabs { display: flex; gap: 0.35rem; }
+.site-tabs {
+  display: flex;
+  gap: 0.35rem;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-box-stroke) transparent;
+}
+.site-tabs::-webkit-scrollbar { height: 4px; }
+.site-tabs::-webkit-scrollbar-thumb {
+  background: var(--color-box-stroke);
+  border-radius: 999px;
+}
 .site-tab {
   padding: 0.35rem 0.85rem;
   border-radius: 999px;

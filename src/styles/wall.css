@@ -1,0 +1,162 @@
+/* The Wall — community archive page. tokens.css + global.css üzerine kurulu. */
+
+.wall-intro {
+  margin: 0 0 2.75rem;
+  max-width: 68ch;
+  color: var(--color-text-muted);
+}
+
+.wall-section + .wall-section {
+  margin-top: 3rem;
+}
+
+.wall-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-box-stroke);
+}
+
+.wall-section-head h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.wall-section-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.wall-status {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.wall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+/* Few items shouldn't stretch to fill the row: cap column width and left-align. */
+.wall-grid:has(> :nth-child(1):last-child),
+.wall-grid:has(> :nth-child(2):last-child) {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 300px));
+  justify-content: start;
+}
+
+.wall-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-box-stroke);
+  border-radius: 10px;
+  background: var(--color-box);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform var(--duration-normal) var(--ease-out-expo),
+              border-color var(--duration-fast), box-shadow var(--duration-normal) var(--ease-out-expo);
+}
+
+a.wall-card:hover,
+a.wall-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--color-eth);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+a.wall-card:focus-visible { outline: 2px solid var(--color-eth); outline-offset: 2px; }
+
+.wall-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.wall-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.wall-card-author {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.wall-x-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+  fill: var(--color-text-muted);
+  transition: fill var(--duration-fast);
+}
+.wall-card:hover .wall-x-icon,
+.wall-card:focus-visible .wall-x-icon { fill: var(--color-eth); }
+
+.wall-card-note,
+.wall-card-context {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.wall-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.wall-card:hover .wall-card-link,
+.wall-card:focus-visible .wall-card-link { color: var(--color-eth); }
+
+.wall-badge-media {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-eth);
+  color: var(--color-eth);
+}
+
+.wall-card-mine-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid var(--color-box-stroke);
+}
+
+.wall-card-mine .wall-card-body { gap: 0.5rem; }
+
+.wall-card-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .wall-grid,
+  .wall-grid:has(> :nth-child(1):last-child),
+  .wall-grid:has(> :nth-child(2):last-child) {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+}

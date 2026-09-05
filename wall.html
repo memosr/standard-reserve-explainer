@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a1a18">
+  <title>The Wall, The Standard Reserve</title>
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/global.css">
+  <link rel="stylesheet" href="src/styles/wall.css">
+</head>
+<body>
+<main>
+  <div class="site-tabbar">
+    <span class="site-brand">The Standard Reserve, explained</span>
+    <nav class="site-tabs" aria-label="Site pages">
+      <a href="index.html" class="site-tab">Flow Engine</a>
+      <!-- Be a Banker tab hidden while simulator.html is unlisted. Uncomment to restore:
+      <a href="simulator.html" class="site-tab">Be a Banker</a>
+      -->
+      <a href="story.html" class="site-tab">The Bank Is Code</a>
+      <a href="wall.html" class="site-tab" aria-current="page">The Wall</a>
+    </nav>
+  </div>
+
+  <header>
+    <h1>The Wall</h1>
+  </header>
+
+  <p class="wall-intro">A running archive of what the community is building and posting around The Standard Reserve. All credit goes to the original authors, every card links back to them.</p>
+
+  <p class="wall-status" data-wall-status hidden></p>
+
+  <section class="wall-section" aria-labelledby="wall-research-title">
+    <div class="wall-section-head">
+      <h2 id="wall-research-title">Research</h2>
+      <span class="wall-section-count" data-wall-count="research"></span>
+    </div>
+    <div class="wall-grid" data-wall-list="research"></div>
+  </section>
+
+  <section class="wall-section" aria-labelledby="wall-archive-title">
+    <div class="wall-section-head">
+      <h2 id="wall-archive-title">Archive</h2>
+      <span class="wall-section-count" data-wall-count="archive"></span>
+    </div>
+    <div class="wall-grid" data-wall-list="archive"></div>
+  </section>
+
+  <section class="wall-section" aria-labelledby="wall-mine-title">
+    <div class="wall-section-head">
+      <h2 id="wall-mine-title">Mine</h2>
+      <span class="wall-section-count" data-wall-count="mine"></span>
+    </div>
+    <div class="wall-grid" data-wall-list="mine"></div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Community explainer, not affiliated. Source: <a href="https://www.standardreserve.xyz/whitepaper/" rel="noopener">Standard Reserve whitepaper v0.1</a></p>
+    <p>Built by <a href="https://github.com/memosr" rel="noopener">memosr</a></p>
+  </footer>
+</main>
+<script type="module" src="src/js/wall.js"></script>
+</body>
+</html>
