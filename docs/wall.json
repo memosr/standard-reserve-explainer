@@ -1,6 +1,12 @@
 {
   "research": [
     {
+      "author": "@standard_rsv",
+      "url": "https://x.com/standard_rsv/status/2093328953931116590",
+      "note": "",
+      "image": "assets/img/tw-official.jpeg"
+    },
+    {
       "author": "@hautism",
       "url": "https://x.com/hautism/status/2094497545544450271",
       "note": "One of the stronger breakdowns circulating so far.",
@@ -75,6 +81,12 @@
       "url": "https://x.com/memosrETH/status/2095882828332351523",
       "note": "And this one.",
       "image": "assets/img/meme-4.png"
+    },
+    {
+      "title": "Post",
+      "url": "https://x.com/memosrETH/status/2096557423423045779",
+      "note": "",
+      "image": "assets/img/mine-4.png"
     }
   ]
 }
